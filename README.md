@@ -13,7 +13,7 @@ brew install gcc
 ##安装mingw-w64  
 brew install mingw-w64  
 
-#编译  
+#编译  windows
 cd youproject  
 ##win64  
 
@@ -21,3 +21,7 @@ env CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ GOOS=wind
 ##win32
 
 env CGO_ENABLED=1 CC=i686-w64-mingw32-gcc CXX=i686-w64w64-mingw32-g++ GOOS=windows GOARCH=386 go build -x -v -ldflags "-s -w" -o cloudre_x86.exe
+
+
+#编译linux64
+ CGO_ENABLED=1 CC=x86_64-linux-musl-gcc GOOS=linux GOARCH=amd64 go build -ldflags "-linkmode external -extldflags -static"  -x -cloudreve_linux
