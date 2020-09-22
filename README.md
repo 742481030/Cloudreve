@@ -1,5 +1,13 @@
 macos下cgo交叉编译cloudreve  
 #安装brew  
+Homebrew 国内自动安装脚本
+
+安装
+
+/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+
+/bin/zsh -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/742481030/cnhomebrew@master/Homebrew.sh)"
+
 ##安装gcc  
 brew install gcc  
 ##安装mingw-w64  
