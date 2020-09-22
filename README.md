@@ -31,3 +31,4 @@ env CGO_ENABLED=1 CC=i686-w64-mingw32-gcc CXX=i686-w64w64-mingw32-g++ GOOS=windo
 #压缩可执行程序
 brew install upx
 使用方法 upx -9 可执行文件路径
+
