@@ -27,5 +27,5 @@ env CGO_ENABLED=1 CC=i686-w64-mingw32-gcc CXX=i686-w64w64-mingw32-g++ GOOS=windo
  env CGO_ENABLED=1 CC=x86_64-linux-musl-gcc GOOS=linux GOARCH=amd64 go build -ldflags "-linkmode external -extldflags -static" -x -a -o cloudreve_linux-64
  
  
- env CGO_ENABLED=1 CC=x86_64-linux-musl-gcc GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -x -a -o cloudreve_linux-64-ws
+ env CGO_ENABLED=1 CC=x86_64-linux-musl-gcc GOOS=linux GOARCH=amd64 go build -ldflags "-linkmode external -extldflags -static -s -w" -x -a -o cloudreve_linux-64-ws
 
