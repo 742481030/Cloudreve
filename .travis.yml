@@ -1,4 +1,4 @@
 os: osx
 script:
-  
+  - sudo chmod 777 mac-build-cgo
   -  ./mac-build-cgo
