@@ -1,39 +1,4 @@
 os: osx
-language: go
-go:
-  - 1.13.x
-node_js: "12.16.3"
-git:
-  depth: 1
-install:
-  - go get github.com/rakyll/statik
-before_script:
-  - statik -src=models -f
 script:
-  - go test -coverprofile=coverage.txt -covermode=atomic ./...
-
-before_deploy:
- 
-    brew install FiloSottile/musl-cross/musl-cross
-    brew install mingw-w64
-    brew install go
-    brew install uxp 
-
-
-install:
-go build -x -v -ldflags "-s -w" -o cloudrev-macos && upx -9 cloudrev-macos ||echo "编译请检查runtime"
-
-env CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ GOOS=windows GOARCH=amd64 go build  -v -ldflags "-s -w" -o cloudrev_x64.exe && upx -9 cloudrev_x64.exe ||echo "win64编译失败"
-
-env CGO_ENABLED=1 CC=i686-w64-mingw32-gcc CXX=i686-w64w64-mingw32-g++ GOOS=windows GOARCH=386 go build  -v -ldflags "-s -w" -o cloudre_x86.exe && upx -9 cloudre_x86.exe ||echo "win32编译失败"
-
-env CGO_ENABLED=1 CC=x86_64-linux-musl-gcc GOOS=linux GOARCH=amd64 go build -ldflags "-linkmode external -extldflags -static -s -w"   -o cloudreve_linux-64 && upx -9 cloudreve_linux-64 || echo "linux编译失败"
-deploy:
-  provider: releases
-  api_key: $GITHUB_TOKEN
-  file_glob: true
-  file: release/*
-  draft: true
-  skip_cleanup: true
-  on:
-    tags: true
+  
+  -  ./mac-build-cgo
