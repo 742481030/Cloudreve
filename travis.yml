@@ -1,16 +1,7 @@
 os: osx
 osx_image: xcode12uscript:
   
-git:
-  depth: 1
-install:
-  - go get github.com/rakyll/statik
-before_script:
-  - statik -src=models -f
 script:
-  - go test -coverprofile=coverage.txt -covermode=atomic ./...
-
-before_deploy:
  
     brew install FiloSottile/musl-cross/musl-cross
     brew install mingw-w64
