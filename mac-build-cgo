@@ -1,8 +1,25 @@
 
 REPO=$(cd $(dirname $0); pwd)
 
+
+
+  cd $REPO/assets
+
+  yarn install
+  yarn run build
+
+  if ! [ -x "$(command -v statik)" ]; then
+    export CGO_ENABLED=0
+    go get github.com/rakyll/statik
+  fi
+
+  cd $REPO
+  statik -src=assets/build/  -include=*.html,*.js,*.json,*.css,*.png,*.svg,*.ico -f
+
+
+
 cd $REPO
-command -v brew || /bin/zsh -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/742481030/cnhomebrew@master/Homebrew.sh)"
+#command -v brew || /bin/zsh -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/742481030/cnhomebrew@master/Homebrew.sh)"
 command -v x86_64-linux-musl-gcc || brew install FiloSottile/musl-cross/musl-cross
 command -v x86_64-w64-mingw32-gcc || brew install mingw-w64
 command -v go ||brew install go
