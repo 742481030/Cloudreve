@@ -1,4 +1,4 @@
 os: osx
-script:
-  - sudo chmod 777 mac-build-cgo
+osx_image: xcode12uscript:
+  -  chmod u+x mac-build-cgo
   -  ./mac-build-cgo
